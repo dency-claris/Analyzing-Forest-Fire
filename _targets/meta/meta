@@ -7,9 +7,11 @@ clean_data|function|6f22d0a6961befb3|||||||||||||||
 fires_by_day_plot|stem|e186ec16739eae15|699ea213f1bd3d41|8321eeb9519fb2b3|1309010181||t20110.9266926018s|s104980b|104980|rds|local|vector|||0.03||
 forest_fires|stem|64601594a16dd9d2|5a386768c2c61b05|db6542c70d8b9c84|897656315||t20110.9420923138s|s8955b|8955|rds|local|vector|||0.01||
 forest_fires_long_boxplot|stem|2eff4ff4e8761e5b|114d68fc9b8b24e4|1d03d73898986482|-883225472||t20110.9510208968s|s169008b|169008|rds|local|vector|||0.02||
+forest_fires_long|stem|0780bd0dc939675d|b00cf2e2265711a4|266c42cbf5a216b1|-911890293||t20110.9517765359s|s11077b|11077|rds|local|vector|||0.02||
+forest_fires_pointplot|stem|37606f2b46e10b75|ce96a1ef7baba018|bf75312cd557609e|1641122432||t20110.9566881327s|s151359b|151359|rds|local|vector|||0.01||
 transform_data|function|6f22d0a6961befb3
 get_data|function|afa88199d41f9ab6
 plot_fires|function|e955de7a5ae47d0c
+plot_pointplot|function|9d553a28b0124833
 forest_long|function|78b9dbc5babf3962
 plot_boxplot|function|17120e85ecba11f6
-forest_fires_long|stem|0780bd0dc939675d|b00cf2e2265711a4|266c42cbf5a216b1|-911890293||t20110.9517765359s|s11077b|11077|rds|local|vector|||0.02||

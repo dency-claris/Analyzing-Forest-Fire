@@ -27,7 +27,10 @@ list(
   tar_target(forest_fires_long, forest_long(forest_fires)),
 
   tar_target(forest_fires_long_boxplot,
-             plot_boxplot(forest_fires_long))
+             plot_boxplot(forest_fires_long)),
+
+  tar_target(forest_fires_pointplot,
+             plot_pointplot(forest_fires_long))
 
 
 
