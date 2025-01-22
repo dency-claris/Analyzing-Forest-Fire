@@ -1,0 +1,31 @@
+library(tidyverse)
+library(targets)
+source("R/Functions.R")
+
+list(
+  tar_target(fires, get_data()),
+
+  tar_target(
+    forest_fires,
+    clean_data(fires,
+               month_order <- c("jan", "feb", "mar",
+                                "apr", "may", "jun",
+                                "jul", "aug", "sep",
+                                "oct", "nov", "dec"),
+               day_order <- c("sun", "mon", "tue", "wed", "thu", "fri", "sat")
+               )
+            ),
+
+  tar_target(
+    fires_by_month_plot,
+    plot_fires(forest_fires, month, "Month")),
+
+  tar_target(
+    fires_by_day_plot,
+    plot_fires(forest_fires, day, "Day"))
+
+
+
+  )
+
+
