@@ -24,7 +24,7 @@ plot_fires <- function(data, level_col, level_label){
       x = level_label
       )
 }
-plot_boxplot <- function(data){
+forest_long <- function(data){
   forest_fires_long <- data |>
     pivot_longer(
       cols = c("FFMC", "DMC", "DC",
@@ -33,7 +33,10 @@ plot_boxplot <- function(data){
       names_to = "data_col",
       values_to = "value"
     )
-  forest_fires_long |>
+}
+
+plot_boxplot <- function(data){
+  data |>
     ggplot(aes(x = month, y = value)) +
     geom_boxplot() +
     facet_wrap(vars(data_col), scale = "free_y") +

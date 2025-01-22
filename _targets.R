@@ -24,8 +24,10 @@ list(
     fires_by_day_plot,
     plot_fires(forest_fires, day, "Day")),
 
+  tar_target(forest_fires_long, forest_long(forest_fires)),
+
   tar_target(forest_fires_long_boxplot,
-             plot_boxplot(forest_fires))
+             plot_boxplot(forest_fires_long))
 
 
 
