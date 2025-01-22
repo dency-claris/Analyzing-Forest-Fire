@@ -2,9 +2,12 @@ name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iterat
 fires|stem|260f3263601a2247|3d8e5f857c63cf80|478625dcf3c41018|1096100892||t20110.8940839256s|s9232b|9232|rds|local|vector|||0.3||
 month_order|object|4f9404767e26a05e|||||||||||||||
 day_order|object|a2daa77836283359|||||||||||||||
-forest_fires|stem|64601594a16dd9d2|e3dace6348ed1acc|38e99aac9f1b190f|897656315||t20110.9070485797s|s8955b|8955|rds|local|vector|||0.01||
 fires_by_month_plot|stem|ee3d5555d2791942|28d75c60d9020988|8321eeb9519fb2b3|1222078708||t20110.9245278395s|s105074b|105074|rds|local|vector|||0.02||
-clean_data|function|6f22d0a6961befb3
+clean_data|function|6f22d0a6961befb3|||||||||||||||
+fires_by_day_plot|stem|e186ec16739eae15|699ea213f1bd3d41|8321eeb9519fb2b3|1309010181||t20110.9266926018s|s104980b|104980|rds|local|vector|||0.03||
+transform_data|function|6f22d0a6961befb3
 get_data|function|afa88199d41f9ab6
 plot_fires|function|e955de7a5ae47d0c
-fires_by_day_plot|stem|e186ec16739eae15|699ea213f1bd3d41|8321eeb9519fb2b3|1309010181||t20110.9266926018s|s104980b|104980|rds|local|vector|||0.03||
+plot_boxplot|function|ab4732aff6890d92
+forest_fires|stem|64601594a16dd9d2|5a386768c2c61b05|db6542c70d8b9c84|897656315||t20110.9420923138s|s8955b|8955|rds|local|vector|||0.01||
+forest_fires_long_boxplot|stem|2c13041f38abf83b|cd30eec259d3b6ff|efcb7c009928639e|-883225472||t20110.9420934101s|s178239b|178239|rds|local|vector|||0.02||

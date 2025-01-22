@@ -2,7 +2,7 @@ get_data <- function(){
   readr::read_csv("forestfires.csv")
 }
 
-clean_data <- function(data, month_order, day_order){
+transform_data <- function(data, month_order, day_order){
   data |>
     mutate(
       month = factor(month, levels = month_order),
@@ -24,22 +24,22 @@ plot_fires <- function(data, level_col, level_label){
       x = level_label
       )
 }
-
-forest_fires_long <- forest_fires %>%
-  pivot_longer(
-    cols = c("FFMC", "DMC", "DC",
-             "ISI", "temp", "RH",
-             "wind", "rain"),
-    names_to = "data_col",
-    values_to = "value"
-  )
-
-forest_fires_long %>%
-  ggplot(aes(x = month, y = value)) +
-  geom_boxplot() +
-  facet_wrap(vars(data_col), scale = "free_y") +
-  labs(
-    title = "Variable changes over month",
-    x = "Month",
-    y = "Variable value"
-  )
+plot_boxplot <- function(data){
+  forest_fires_long <- data |>
+    pivot_longer(
+      cols = c("FFMC", "DMC", "DC",
+               "ISI", "temp", "RH",
+               "wind", "rain"),
+      names_to = "data_col",
+      values_to = "value"
+    )
+  forest_fires_long |>
+    ggplot(aes(x = month, y = value)) +
+    geom_boxplot() +
+    facet_wrap(vars(data_col), scale = "free_y") +
+    labs(
+      title = "Variable changes over month",
+      x = "Month",
+      y = "Variable value"
+    )
+}

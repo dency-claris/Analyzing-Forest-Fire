@@ -7,7 +7,7 @@ list(
 
   tar_target(
     forest_fires,
-    clean_data(fires,
+    transform_data(fires,
                month_order <- c("jan", "feb", "mar",
                                 "apr", "may", "jun",
                                 "jul", "aug", "sep",
@@ -22,7 +22,10 @@ list(
 
   tar_target(
     fires_by_day_plot,
-    plot_fires(forest_fires, day, "Day"))
+    plot_fires(forest_fires, day, "Day")),
+
+  tar_target(forest_fires_long_boxplot,
+             plot_boxplot(forest_fires))
 
 
 
