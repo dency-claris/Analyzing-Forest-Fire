@@ -48,13 +48,16 @@ plot_boxplot <- function(data){
 }
 
 plot_pointplot <- function(data){
-  data |>
+  data %>%
+    filter(area < 300) %>%
     ggplot(aes(x = value, y = area)) +
     geom_point() +
     facet_wrap(vars(data_col), scales = "free_x") +
     labs(
-      title = "Relationships between other variables and area burned",
+      title = "Relationships between other variables and area burned (area < 300)",
       x = "Value of column",
       y = "Area burned (hectare)"
     )
 }
+
+
