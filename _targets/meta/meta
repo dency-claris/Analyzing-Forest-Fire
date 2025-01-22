@@ -8,10 +8,15 @@ fires_by_day_plot|stem|e186ec16739eae15|699ea213f1bd3d41|8321eeb9519fb2b3|130901
 forest_fires|stem|64601594a16dd9d2|5a386768c2c61b05|db6542c70d8b9c84|897656315||t20110.9420923138s|s8955b|8955|rds|local|vector|||0.01||
 forest_fires_long_boxplot|stem|2eff4ff4e8761e5b|114d68fc9b8b24e4|1d03d73898986482|-883225472||t20110.9510208968s|s169008b|169008|rds|local|vector|||0.02||
 forest_fires_long|stem|0780bd0dc939675d|b00cf2e2265711a4|266c42cbf5a216b1|-911890293||t20110.9517765359s|s11077b|11077|rds|local|vector|||0.02||
+forest_fires_pointplot|stem|da86f5696214c6ce|ce96a1ef7baba018|523d85b8f6de2fc3|1641122432||t20110.9616511576s|s163349b|163349|rds|local|vector|||0.01||
+fires_by_month_plot_saved|stem|63150758092e6512|eed0eb098bc8ca8c|2034228d8a07a0d5|578513055|fig/fires_by_month.png|t20110.9693559977s|s54281b|54281|file|local|vector|||3.4||
 transform_data|function|6f22d0a6961befb3
 get_data|function|afa88199d41f9ab6
+save_plot|function|d11e9cf836f47147
 plot_fires|function|e955de7a5ae47d0c
 plot_pointplot|function|8398b35f0a866738
 forest_long|function|78b9dbc5babf3962
 plot_boxplot|function|17120e85ecba11f6
-forest_fires_pointplot|stem|da86f5696214c6ce|ce96a1ef7baba018|523d85b8f6de2fc3|1641122432||t20110.9616511576s|s163349b|163349|rds|local|vector|||0.01||
+fires_by_day_plot_saved|stem|55c64de8c78d6257|92617bd2b2f4d65d|4bedb861c8126638|1665935139|fig/fires_by_day.png|t20110.9717923137s|s48907b|48907|file|local|vector|||0.3||
+forest_fires_pointplot_saved|stem|2f74621cad64ef6f|c3ab7dae9ee6c20f|aea23cddde3f541d|1610157418|fig/forest_fires_pointplot.png|t20110.9717989677s|s267306b|267306|file|local|vector|||0.54||
+forest_fires_boxplot_saved|stem|7a97e4473af1295c|313f9fa4e546b90f|44014012dc708870|453778669|fig/forest_fires_boxplot.png|t20110.9718119767s|s176833b|176833|file|local|vector|||1.09||
