@@ -35,28 +35,49 @@ forest_long <- function(data){
     )
 }
 
-plot_boxplot <- function(data){
-  data |>
-    ggplot(aes(x = month, y = value)) +
-    geom_boxplot() +
-    facet_wrap(vars(data_col), scale = "free_y") +
+
+
+plot_boxplot <- function(data) {
+  data %>%
+    ggplot(aes(x = month, y = value, fill = month)) +  # Use 'fill' for color by month
+    geom_boxplot(outlier.color = "red", outlier.size = 2, alpha = 0.7) +  # Add custom outlier styling
+    facet_wrap(vars(data_col), scales = "free_y", ncol = 2) +  # Free scales and two columns
+    scale_fill_brewer(palette = "Set3") +  # Use a color palette for months
+    theme_minimal(base_size = 14) +  # Clean theme with larger text
+    theme(
+      panel.grid.major = element_line(color = "gray80", linewidth = 0.5),  # Light grid lines
+      strip.background = element_rect(fill = "lightblue", color = NA),  # Background for facet strips
+      legend.position = "none"  # Remove legend for a cleaner look
+    ) +
     labs(
-      title = "Variable changes over month",
+      title = "Monthly Variation of Variables",
+      subtitle = "Boxplots showing the distribution of variables over months",
       x = "Month",
-      y = "Variable value"
+      y = "Variable Value"
     )
 }
 
-plot_pointplot <- function(data){
+
+plot_pointplot <- function(data) {
   data %>%
-    filter(area < 300) %>%
-    ggplot(aes(x = value, y = area)) +
-    geom_point() +
-    facet_wrap(vars(data_col), scales = "free_x") +
+    filter(area < 300) %>%  # Filter area < 300
+    ggplot(aes(x = value, y = area, color = data_col)) +  # Use color for 'data_col'
+    geom_point(size = 3, alpha = 0.7) +  # Add transparency for better visibility
+    geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "black") +  # Add trend lines
+    facet_wrap(vars(data_col), scales = "free_x", ncol = 2) +  # Free scales and two columns
+    scale_color_brewer(palette = "Dark2") +  # Use a distinct color palette
+    theme_minimal(base_size = 14) +  # Clean theme with larger text
+    theme(
+      panel.grid.major = element_line(color = "gray80", linewidth = 0.5),  # Light grid lines
+      strip.background = element_rect(fill = "lightblue", color = NA),  # Background for facet strips
+      legend.position = "bottom"  # Move legend to bottom
+    ) +
     labs(
-      title = "Relationships between other variables and area burned (area < 300)",
-      x = "Value of column",
-      y = "Area burned (hectare)"
+      title = "Variable Relationships with Burned Area",
+      subtitle = "Scatter plots showing relationships (area < 300)",
+      x = "Value of Column",
+      y = "Burned Area (Hectares)",
+      color = "Variable"
     )
 }
 
@@ -64,3 +85,71 @@ save_plot <- function(save_path, plot){
   ggsave(save_path, plot)
   save_path
 }
+
+plot_heatmap <- function(data) {
+  data |>
+    count(month, day) |>
+    ggplot(aes(x = month, y = day, fill = n)) +
+    geom_tile(color = "white") +
+    scale_fill_viridis_c(option = "C", direction = -1, name = "Fire Count") +
+    labs(
+      title = "Forest Fires Frequency Heatmap by Month and Day",
+      x = "Month",
+      y = "Day"
+    ) +
+    theme_minimal() +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      panel.grid = element_blank()
+    )
+}
+
+plot_scatter_wind_area <- function(data) {
+  data |>
+    ggplot(aes(x = wind, y = area, size = rain, color = temp)) +
+    geom_point(alpha = 0.7) +
+    scale_color_viridis_c(option = "B", name = "Temperature (°C)") +
+    scale_size_continuous(name = "Rain (mm/m²)", range = c(2, 10)) +
+    labs(
+      title = "Impact of Wind Speed and Rain on Burned Area",
+      x = "Wind Speed (km/h)",
+      y = "Area Burned (ha)"
+    ) +
+    theme_minimal() +
+    theme(
+      legend.position = "right",
+      plot.title = element_text(size = 14, face = "bold")
+    )
+}
+
+
+plot_radar_chart <- function(forest_fires) {
+  # Summarize data by month
+  plot_data <- forest_fires %>%
+    group_by(month) %>%
+    summarize(
+      FFMC = mean(FFMC, na.rm = TRUE),
+      DMC = mean(DMC, na.rm = TRUE),
+      DC = mean(DC, na.rm = TRUE),
+      ISI = mean(ISI, na.rm = TRUE)
+    )
+
+  # Ensure numeric data
+  plot_data <- plot_data %>%
+    mutate_if(is.factor, as.numeric)
+
+  # Set grid.max dynamically
+  grid_max_value <- max(plot_data[-1], na.rm = TRUE)
+
+  # Plot radar chart
+  ggradar(
+    plot_data,
+    grid.min = 0,
+    grid.mid = grid_max_value / 2,
+    grid.max = grid_max_value
+  )
+}
+
+
+
+
