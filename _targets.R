@@ -42,11 +42,11 @@ list(
              plot_scatter_wind_area(forest_fires)),
 
   tar_target(radar_chart_plot,
-             plot_radar_chart(forest_fires)),
+             plot_radar_chart(forest_fires))
 
-  tar_quarto(
-    my_doc,
-    path = "my_doc.qmd"
-  )
+  #tar_quarto(
+  #  my_doc,
+  #  path = "my_doc.qmd"
+  #)
 
   )
