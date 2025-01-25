@@ -16,10 +16,17 @@ plot_fires <- function(data, level_col, level_label){
     group_by({{ level_col }})|>
     summarize(total_fires = n(), .groups = "drop")
   fires |>
-    ggplot(aes(x = {{ level_col }}, y = total_fires)) +
+    ggplot(aes(x = {{ level_col }}, y = total_fires, fill = "Fire Count")) +
     geom_col() +
+    theme (
+      plot.title = element_text(size=15, face= "bold", colour= "black" ),
+      axis.title.x = element_text(size=14, face="bold", colour = "black"),
+      axis.title.y = element_text(size=14, face="bold", colour = "black"),
+      axis.text.x = element_text(size=12, face="bold", colour = "black"),
+      axis.text.y = element_text(size=12, face="bold", colour = "black")
+    ) +
     labs(
-      title = paste("Number of forest fires in data by", level_label),
+      title = paste("Number of forest fires by", level_label),
       y = "Fire count",
       x = level_label
       )
@@ -123,10 +130,10 @@ plot_scatter_wind_area <- function(data) {
 }
 
 
-plot_radar_chart <- function(forest_fires) {
+plot_radar_chart <- function(data) {
   # Summarize data by month
-  plot_data <- forest_fires %>%
-    group_by(month) %>%
+  plot_data <- data |>
+    group_by(month) |>
     summarize(
       FFMC = mean(FFMC, na.rm = TRUE),
       DMC = mean(DMC, na.rm = TRUE),
@@ -135,7 +142,7 @@ plot_radar_chart <- function(forest_fires) {
     )
 
   # Ensure numeric data
-  plot_data <- plot_data %>%
+  plot_data <- plot_data |>
     mutate_if(is.factor, as.numeric)
 
   # Set grid.max dynamically
@@ -147,7 +154,8 @@ plot_radar_chart <- function(forest_fires) {
     grid.min = 0,
     grid.mid = grid_max_value / 2,
     grid.max = grid_max_value
-  )
+  ) +
+    labs(title = "Radar Chart of Monthly Fire Weather Parameters")
 }
 
 
