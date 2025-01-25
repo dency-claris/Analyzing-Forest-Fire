@@ -32,6 +32,11 @@ list(
              plot_boxplot(forest_fires_long)),
 
   tar_target(forest_fires_pointplot,
-             plot_pointplot(forest_fires_long))
+             plot_pointplot(forest_fires_long)),
+
+  tar_quarto(
+    my_doc,
+    path = "my_doc.qmd"
+  )
 
   )
