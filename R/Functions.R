@@ -1,7 +1,10 @@
+# Function to read the forest fire dataset
 get_data <- function(){
   readr::read_csv("forestfires.csv")
 }
 
+# Function to transform the dataset
+# Reorders the 'month' and 'day' columns based on predefined orders
 transform_data <- function(data, month_order, day_order){
   data |>
     mutate(
@@ -11,6 +14,7 @@ transform_data <- function(data, month_order, day_order){
     select(everything())
 }
 
+# Function to plot the number of fires by a specified column
 plot_fires <- function(data, level_col, level_label){
   fires <- data |>
     group_by({{ level_col }})|>
@@ -31,6 +35,8 @@ plot_fires <- function(data, level_col, level_label){
       x = level_label
       )
 }
+
+# Function to convert dataset to long format for easier visualization
 forest_long <- function(data){
   forest_fires_long <- data |>
     pivot_longer(
@@ -42,19 +48,18 @@ forest_long <- function(data){
     )
 }
 
-
-
+# Function to create boxplots for monthly variation of variables
 plot_boxplot <- function(data) {
   data %>%
-    ggplot(aes(x = month, y = value, fill = month)) +  # Use 'fill' for color by month
-    geom_boxplot(outlier.color = "red", outlier.size = 2, alpha = 0.7) +  # Add custom outlier styling
-    facet_wrap(vars(data_col), scales = "free_y", ncol = 2) +  # Free scales and two columns
-    scale_fill_brewer(palette = "Set3") +  # Use a color palette for months
-    theme_minimal(base_size = 14) +  # Clean theme with larger text
+    ggplot(aes(x = month, y = value, fill = month)) +
+    geom_boxplot(outlier.color = "red", outlier.size = 2, alpha = 0.7) +
+    facet_wrap(vars(data_col), scales = "free_y", ncol = 2) +
+    scale_fill_brewer(palette = "Set3") +
+    theme_minimal(base_size = 14) +
     theme(
-      panel.grid.major = element_line(color = "gray80", linewidth = 0.5),  # Light grid lines
-      strip.background = element_rect(fill = "lightblue", color = NA),  # Background for facet strips
-      legend.position = "none"  # Remove legend for a cleaner look
+      panel.grid.major = element_line(color = "gray80", linewidth = 0.5),
+      strip.background = element_rect(fill = "lightblue", color = NA),
+      legend.position = "none"
     ) +
     labs(
       title = "Monthly Variation of Variables",
@@ -64,7 +69,7 @@ plot_boxplot <- function(data) {
     )
 }
 
-
+# Function to create scatter plots showing relationships with burned area
 plot_pointplot <- function(data) {
   data %>%
     filter(area < 300) %>%  # Filter area < 300
@@ -88,11 +93,13 @@ plot_pointplot <- function(data) {
     )
 }
 
+# Function to save plots to a specified path
 save_plot <- function(save_path, plot){
   ggsave(save_path, plot)
   save_path
 }
 
+# Function to create a heatmap of fire frequency by month and day
 plot_heatmap <- function(data) {
   data |>
     count(month, day) |>
@@ -111,6 +118,7 @@ plot_heatmap <- function(data) {
     )
 }
 
+# Function to plot scatterplots of wind, rain, and area burned
 plot_scatter_wind_area <- function(data) {
   data |>
     ggplot(aes(x = wind, y = area, size = rain, color = temp)) +
@@ -129,7 +137,7 @@ plot_scatter_wind_area <- function(data) {
     )
 }
 
-
+# Function to create a radar chart of monthly fire weather parameters
 plot_radar_chart <- function(data) {
   # Summarize data by month
   plot_data <- data |>
@@ -157,7 +165,3 @@ plot_radar_chart <- function(data) {
   ) +
     labs(title = "Radar Chart of Monthly Fire Weather Parameters")
 }
-
-
-
-
