@@ -1,4 +1,5 @@
 library(tidyverse)
+library(ggradar)
 library(targets)
 library(tarchetypes)
 library(quarto)
@@ -33,6 +34,15 @@ list(
 
   tar_target(forest_fires_pointplot,
              plot_pointplot(forest_fires_long)),
+
+  tar_target(fires_heatmap,
+             plot_heatmap(forest_fires)),
+
+  tar_target(scatter_wind_area_plot,
+             plot_scatter_wind_area(forest_fires)),
+
+  tar_target(radar_chart_plot,
+             plot_radar_chart(forest_fires)),
 
   tar_quarto(
     my_doc,
