@@ -1,5 +1,7 @@
 library(tidyverse)
 library(targets)
+library(tarchetypes)
+library(quarto)
 source("R/Functions.R")
 
 list(
@@ -30,26 +32,6 @@ list(
              plot_boxplot(forest_fires_long)),
 
   tar_target(forest_fires_pointplot,
-             plot_pointplot(forest_fires_long)),
-
-  tar_target(
-    fires_by_month_plot_saved,
-    save_plot("fig/fires_by_month.png", fires_by_month_plot),
-    format = "file"),
-
-  tar_target(
-    fires_by_day_plot_saved,
-    save_plot("fig/fires_by_day.png", fires_by_day_plot),
-    format = "file"),
-
-  tar_target(
-    forest_fires_boxplot_saved,
-    save_plot("fig/forest_fires_boxplot.png", forest_fires_long_boxplot),
-    format = "file"),
-
-  tar_target(
-    forest_fires_pointplot_saved,
-    save_plot("fig/forest_fires_pointplot.png", forest_fires_pointplot),
-    format = "file")
+             plot_pointplot(forest_fires_long))
 
   )
