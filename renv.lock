@@ -553,6 +553,21 @@
       ],
       "Hash": "44c6a2f8202d5b7e878ea274b1092426"
     },
+    "ggradar": {
+      "Package": "ggradar",
+      "Version": "0.2",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "ggradar",
+      "RemoteUsername": "ricardo-bion",
+      "RemoteSha": "f99517ae4df2903d3dbd4116af91b24009a5ac93",
+      "Requirements": [
+        "forcats",
+        "ggplot2"
+      ],
+      "Hash": "5c884fdb98bed4d1b765c9debc92ac9e"
+    },
     "glue": {
       "Package": "glue",
       "Version": "1.8.0",
