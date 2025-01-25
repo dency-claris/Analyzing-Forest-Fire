@@ -1,0 +1,26 @@
+---
+title: "Reading objects from a targets pipeline"
+author: "Dency Claris Thomas"
+date: "today"
+format: html
+---
+
+```{r}
+#| echo: false
+targets::tar_read(fires_by_month_plot)
+```
+
+```{r}
+#| echo: false
+targets::tar_read(fires_by_day_plot)
+```
+
+```{r}
+#| echo: false
+targets::tar_read(forest_fires_long_boxplot)
+```
+
+```{r}
+#| echo: false
+targets::tar_read(forest_fires_pointplot)
+```
