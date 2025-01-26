@@ -59,8 +59,3 @@ The Shiny app provides visualizations for analyzing forest fire data. It include
 
 ### Interacting with the App
 Select a visualization type from the dropdown and view the corresponding plot in the main panel.
-
-## Additional Notes
-- Ensure `_targets.R` and `R/Functions.R` are configured correctly.
-- The data is read from `forest_fires.csv`.
-- Run `tar_make()` to process the pipeline before launching the app.
