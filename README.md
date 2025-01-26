@@ -26,7 +26,7 @@ docker run -d -p 3838:3838 --name forest_fire_shiny_app forest_fire_shiny_app
 ```
 Access the Shiny app in your browser at: [http://localhost:3838](http://localhost:3838).
 
-### 3. GitHub Actions Workflow
+## GitHub Actions Workflow
 This repository includes a GitHub Actions workflow to automatically build, test, and validate the Dockerized Shiny app upon each push or pull request to the `main` branch. The workflow performs the following steps:
 1. Checks out the repository code.
 2. Sets up Docker.
@@ -41,14 +41,14 @@ The workflow file is located at `.github/workflows/mail.yml`.
 The Shiny app provides visualizations for analyzing forest fire data. It includes:
 
 ### User Interface
-1. **Dropdown Menu**: Select a visualization type:
+**Dropdown Menu**: Select a visualization type:
    - Fires by Month
    - Fires by Day
    - Boxplot of Variables
    - Scatter: Wind vs Area
    - Heatmap of Fires
    - Radar Chart
-2. **Help Text**: Provides context for the visualizations.
+
 
 ### Visualizations
 - **Fires by Month/Day**: Displays the frequency of fires by month or day.
